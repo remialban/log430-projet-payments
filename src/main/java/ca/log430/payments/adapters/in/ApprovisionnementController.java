@@ -4,7 +4,7 @@ import ca.log430.payments.domain.Response;
 import ca.log430.payments.domain.model.Approvisionnement;
 import ca.log430.payments.domain.model.ApprovisionnementType;
 import ca.log430.payments.ports.in.ApprovisionnementInterface;
-import ca.log430.payments.ports.out.OrderRepository;
+import ca.log430.payments.ports.out.ApprovisionnementRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
@@ -21,9 +21,9 @@ import java.util.Optional;
 @RequestMapping("/approvisionnements")
 public class ApprovisionnementController implements ApprovisionnementInterface {
 
-    OrderRepository orderRepository;
+    ApprovisionnementRepository orderRepository;
     Environment environment;
-    public ApprovisionnementController(OrderRepository orderRepository, Environment environment) {
+    public ApprovisionnementController(ApprovisionnementRepository orderRepository, Environment environment) {
         this.orderRepository = orderRepository;
         this.environment = environment;
     }

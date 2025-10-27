@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface OrderRepository extends JpaRepository<Approvisionnement, Integer> {
+public interface ApprovisionnementRepository extends JpaRepository<Approvisionnement, Integer> {
     public Approvisionnement save(Approvisionnement ordre);
 
     public List<Approvisionnement> findOrdreByUserId(Integer userId);
