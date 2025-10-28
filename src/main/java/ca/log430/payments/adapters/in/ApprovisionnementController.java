@@ -91,13 +91,13 @@ public class ApprovisionnementController implements ApprovisionnementInterface {
         }
     }
 
-    @GetMapping("/{orderId}")
+    @GetMapping("/{approvisionnementId}")
     public ResponseEntity<Response<Approvisionnement>> getOrderById(@PathVariable Integer orderId) {
         try {
             Optional<Approvisionnement> ordre = this.orderRepository.findById(orderId);
 
             if (ordre.isEmpty()) {
-                return ResponseEntity.status(404).body(new Response<>(null, "Order not found"));
+                return ResponseEntity.status(404).body(new Response<>(null, "Approvisionnement not found"));
             }
 
             return ResponseEntity.ok(new Response<>(ordre.get(), null));
