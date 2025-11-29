@@ -14,12 +14,17 @@ services:
       - postgres_data_payments:/var/lib/postgresql/data
     networks:
       - usernet
-
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
   transaction-service:
     build: .
     container_name: payments-service
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/payments_db
       SPRING_DATASOURCE_USERNAME: postgres
