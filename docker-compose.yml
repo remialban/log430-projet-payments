@@ -37,7 +37,7 @@ services:
 
 networks:
   usernet:
-    driver: bridge
+    external: true
 
 volumes:
   postgres_data_payments:
